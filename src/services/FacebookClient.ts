@@ -1,3 +1,4 @@
+import { injectable } from 'inversify';
 import fetch from 'node-fetch';
 
 import { IInterest } from '../interfaces/IInterest';
@@ -5,6 +6,7 @@ import { IStatusItem } from '../interfaces/IStatusItem';
 import { ISuggestedInterest } from '../interfaces/ISuggestedInterest';
 import { env } from '../utils/env';
 
+@injectable()
 export class FacebookClient {
   private searchUrl = `${env.FACEBOOK_GRAPH_URL}/${env.FACEBOOK_GRAPH_API_VERION}/search`;
   private accessToken: string = env.FACEBOOK_GRAPH_ACCESS_TOKEN;

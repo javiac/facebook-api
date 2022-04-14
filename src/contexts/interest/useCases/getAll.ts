@@ -1,12 +1,16 @@
+import { injectable } from 'inversify';
+
 import { Status } from '../../../enums/Status';
+import { IHandler } from '../../../interfaces/IHandler';
 import { FacebookClient } from '../../../services/FacebookClient';
 
-export class InterestGetAllHandler {
-  public async handle() {
-    const facebookClient = new FacebookClient();
+@injectable()
+export class InterestGetAllHandler implements IHandler {
+  public constructor(private facebookClient: FacebookClient) {}
 
-    const interests = await facebookClient.searchInterests();
-    const targetStatus = await facebookClient.searchStatuses(interests.map((interest) => interest.id));
+  public async handle() {
+    const interests = await this.facebookClient.searchInterests();
+    const targetStatus = await this.facebookClient.searchStatuses(interests.map((interest) => interest.id));
 
     const statusMap = {};
     for (const status of targetStatus) {

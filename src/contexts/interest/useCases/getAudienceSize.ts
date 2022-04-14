@@ -1,17 +1,21 @@
+import { injectable } from 'inversify';
+
+import { IHandler } from '../../../interfaces/IHandler';
 import { FacebookClient } from '../../../services/FacebookClient';
 
-export class InterestGetAudienceSizeHandler {
-  public async handle(ids: string[]) {
-    const facebookClient = new FacebookClient();
+@injectable()
+export class InterestGetAudienceSizeHandler implements IHandler {
+  public constructor(private facebookClient: FacebookClient) {}
 
-    const interests = await facebookClient.searchInterests();
+  public async handle(ids: string[]) {
+    const interests = await this.facebookClient.searchInterests();
 
     const filterMap = {};
     for (const id of ids) {
       filterMap[id] = true;
     }
 
-    const audience = await facebookClient.searchInterestsWithAudienceByName(
+    const audience = await this.facebookClient.searchInterestsWithAudienceByName(
       interests.filter((interest) => filterMap[interest.id]).map((interest) => interest.name)
     );
 

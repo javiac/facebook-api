@@ -8,7 +8,7 @@
     "strict": false,
     "noImplicitAny": false,
     "allowJs": true,
-    "types": ["reflect-metadata"],
+    "types": ["reflect-metadata", "mocha"],
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "lib": ["es6"]

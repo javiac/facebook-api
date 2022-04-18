@@ -1,3 +1,14 @@
+# Descripcion
+NodeJS application interacting with the Facebook marketing API to search interests.
+Main features:
+- Layer architecture with endpoints, controllers and use cases.
+- Mediator between controller and use cases.
+- Container for dependency injection and singleton.
+- Integration tests for the API.
+- Validation for url search params.
+- Error handling.
+- Docker container.
+
 # Setup
 ```
 Create .env file in to root folder (see env_sample)
@@ -38,6 +49,8 @@ GET /interests/audience-size?ids=6007828099136,6009422452499,...
 ```
 
 # Setup with Docker
+```
 npm run docker:build
 npm run docker:nodemodules-volume
 npm run docker:run
+```

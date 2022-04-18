@@ -1,4 +1,3 @@
-
 import mediator from './globalMediator';
 
 export default function registerHandler(target: any, key: string) {

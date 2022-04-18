@@ -1,10 +1,6 @@
 import { IHandler } from "../interfaces/IHandler";
 import container from "../dependencyInjection/container";
 
-export interface Request<T> {
-    data: T
-}
-
 export default class Mediator {
     private handlersRegistry: Map<any, any>;
 
@@ -13,7 +9,6 @@ export default class Mediator {
     }
 
     public async send(request: any): Promise<any> {
-
         const requestType = request.constructor;
         const handlerType = this.handlersRegistry.get(requestType);
 

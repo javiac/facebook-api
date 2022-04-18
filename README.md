@@ -1,5 +1,6 @@
 # Setup
 ```
+Create .env file in to root folder (see env_sample)
 npm install
 npm start
 ```
@@ -35,3 +36,8 @@ GET /interests/audience-size?ids=6007828099136,6009422452499,...
     "totalAudienceSize": 12311525
 }
 ```
+
+# Setup with Docker
+npm run docker:build
+npm run docker:nodemodules-volume
+npm run docker:run

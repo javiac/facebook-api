@@ -12,19 +12,21 @@ console.log(`Using Facebook url ${env.FACEBOOK_GRAPH_URL}`);
 console.log(`Using Facebook API version ${env.FACEBOOK_GRAPH_API_VERION}`);
 
 export function startServer(callback?: () => void) {
-  const app = express();
-  const port = 3000;
+    const app = express();
+    const port = 3000;
 
-  app.get('/', (req, res) => res.json({ message: 'Hello world' }));
-  app.get('/interests', getAll);
-  app.get('/interests/audience-size', getAudienceSize);
+    app.get('/', (req, res) => res.json({ message: 'Hello world' }));
+    app.get('/interests', getAll);
+    app.get('/interests/audience-size', getAudienceSize);
 
-  app.listen(port, () => {
-    console.log(`Server listening at http://localhost:${port}`);
-    callback();
-  });
+    app.listen(port, () => {
+        console.log(`Server listening at http://localhost:${port}`);
+        if (callback) {
+            callback();
+        }
+    });
 }
 
 if (env.NODE_ENV !== 'test') {
-  startServer();
+    startServer();
 }

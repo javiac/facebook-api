@@ -3,9 +3,6 @@ import 'reflect-metadata';
 
 import { getAll, getAudienceSize } from './contexts/interest/interestController';
 import { env } from './utils/env';
-import { configureContainer } from './utils/inversify';
-
-configureContainer();
 
 console.log(`NODE_ENV ${env.NODE_ENV}`);
 console.log(`Using Facebook url ${env.FACEBOOK_GRAPH_URL}`);

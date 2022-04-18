@@ -24,8 +24,13 @@ export class InterestGetAudienceSizeHandler implements IHandler {
             interests.filter((interest) => filterMap[interest.id]).map((interest) => interest.name)
         );
 
+        let totalAudienceSize = 0;
+        if (audience.length > 0) {
+            totalAudienceSize = audience.map((item) => item.audience_size).reduce((a, b) => a + b)
+        }
+
         return {
-            totalAudienceSize: audience.map((item) => item.audience_size).reduce((a, b) => a + b)
+            totalAudienceSize
         };
     }
 }
